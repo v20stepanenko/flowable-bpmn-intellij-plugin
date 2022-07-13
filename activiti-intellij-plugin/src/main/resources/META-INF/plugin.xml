@@ -321,4 +321,7 @@
     <!-- <extensions xmlns="VssIntegration">
         <testExtensionPoint implementation="com.foo.impl.MyExtensionImpl"/>
     </extensions> -->
+    <extensions defaultExtensionNs="com.intellij">
+        <textEditorCustomizer implementation="com.valb3r.bpmn.intellij.activiti.plugin.ActivitiEditorCustomizer"/>
+    </extensions>
 </idea-plugin>
