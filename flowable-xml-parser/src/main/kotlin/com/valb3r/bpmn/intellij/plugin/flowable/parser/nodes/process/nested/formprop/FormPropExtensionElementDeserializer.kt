@@ -16,10 +16,9 @@ class FormPropExtensionElementDeserializer(vc: Class<*>? = null) : StdDeserializ
         val mapper: ObjectMapper = parser.codec as ObjectMapper
 
         return when (staxName) {
-            "formProperty" -> readFormProperty(
-                mapper,
-                node
-            ) // FIXME the ignored field that is updated by custom deserializer because `parser.codec.readTree(parser)` returns single object instead of array
+            "formProperty" -> readFormProperty(mapper, node)
+            "executionListener" -> mapper.treeToValue(node, ExecutionListener::class.java)
+            // FIXME the ignored field that is updated by custom deserializer because `parser.codec.readTree(parser)` returns single object instead of array
             else -> FormPropUnhandledExtensionElement()
         }
     }
