@@ -68,6 +68,7 @@ private fun uiEventCascade(
     val index = event.propertyIndex ?: listOf()
     if (event.newValue.isBlank()) {
         cascades += UiOnlyValueRemovedEvent(event.bpmnElementId, cascadePropTo, index)
+    } else {
+        cascades += IndexUiOnlyValueUpdatedEvent(event.bpmnElementId, cascadePropTo, index, index.dropLast(1) + event.newValue)
     }
-    cascades += IndexUiOnlyValueUpdatedEvent(event.bpmnElementId, cascadePropTo, index, index.dropLast(1) + event.newValue)
 }
